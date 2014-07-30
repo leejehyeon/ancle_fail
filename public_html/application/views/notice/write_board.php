@@ -7,7 +7,7 @@
         <label for="text_body" class="col-xs-1 control-label">내용</label>
         <div class="col-xs-7">
             <textarea id = "text_body" class="form-control" rows="10" placeholder="내용" name="contents"></textarea>
-        </div>
+        </div> 
     </div>
     <div class="form-actions" style="margin-top: 1%">
         <div class="col-xs-offset-10 col-xs-2">

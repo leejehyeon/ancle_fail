@@ -6,7 +6,7 @@
 				<th scope="col" style="width:200px;">제목</th>
 				<th scope="col" style="width:80px;">작성자</th>
 				<th scope="col" style="width:120px;">작성일</th>
-				<th scope="col">조회수</th>
+				<th scope="col">조회수</th> 
 			</tr>
 		</thead>
 		<tbody>

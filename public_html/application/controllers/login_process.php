@@ -83,6 +83,7 @@ class Login_process extends CI_Controller {
 			 'user_name' => $login_data['user_name'], 
 			 'user_year' => $login_data['user_year'],
 			 'user_number' => $login_data['user_number'],
+			 'subject_id' => $login_data['subject_id'],
 			 'user_department' => $login_data['user_department'],
 			 'user_phonenumber' => $login_data['user_phonenumber'],
 			 'user_email' => $login_data['user_email'],

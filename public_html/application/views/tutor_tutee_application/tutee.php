@@ -7,7 +7,7 @@
 					<?foreach($get_list as $lt){?>
 					<option value="<?echo $lt->subject_id;?>"><? echo $lt->subject;?>
 					<?}?>
-				</select>
+				</select> 
 			</div>
 	</div>
 	<div align="center" class = "row" id="tblMain">

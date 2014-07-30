@@ -27,7 +27,6 @@ class reply_ci_board extends CI_Model {
 	}
 	
 	public function select_id_list($reply_id_board_array){
-		$this -> db -> get('ci_reply_board');	
 		$reply_board_id_array = array('reply_id' => $reply_id_board_array['reply_id']);
 		return $this -> db -> get_where('ci_reply_board', $reply_board_id_array) -> row_array();
 	}

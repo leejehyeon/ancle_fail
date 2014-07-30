@@ -76,5 +76,13 @@ class Member extends CI_Model {
 	public function select_divide($divide_array){
 		return $this -> db -> get_where('tutee_application',$divide_array) -> result();
 	}
+	
+	public function subject_by_tutor_data($tutor_subject_array){
+		return $this -> db -> get_where('member',$tutor_subject_array) -> result();
+	}
+
+	public function user_id_get($get_id_array){
+		return $this -> db -> get_where('member',$get_id_array) -> row_array();
+	}
 }
 ?>

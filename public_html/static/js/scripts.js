@@ -174,6 +174,18 @@ function getyear(date){
      window.location.href = url;
 }
 
+function journalgetmonth(date){
+	 var month = document.getElementById('month').value;
+	 var url = "/index.php/lesson/daily_journal_admin/"+date.value+"/"+month;
+     window.location.href = url;
+}
+
+function journalgetyear(date){
+	 var year = document.getElementById('year').value;
+	 var url = "/index.php/lesson/daily_journal_admin/"+year+"/"+date.value;
+     window.location.href = url;
+}
+
 function dailygetmonth(date){
 	 var month = document.getElementById('month').value;
 	 var url = "/index.php/lesson/daily_journal/"+date.value+"/"+month;
@@ -245,64 +257,43 @@ function showtutee(subject){
 	  
 }
 
+// ajax 수업 -> 근무일지 관리
+function showdaily(subject){
+     var year = document.getElementById('year').value;
+	 var month = document.getElementById('month').value;
+	 var form_url = "/index.php/lesson/daily_journal_admin_tutorlist/"+year+"/"+month;
+	  if (subject=="") {
+	    document.getElementById("txtHint").innerHTML="";
+	    return;
+	  } 
+	  if (window.XMLHttpRequest) {
+	    // code for IE7+, Firefox, Chrome, Opera, Safari
+	    xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+	      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+	    }
+	  }
+	  xmlhttp.open('POST',form_url,true);
+	  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xmlhttp.send("subject=" + subject);
+	  
+}
+
 //------------ ajax 수업 -> 출석부 기능
+
+
+function tutor_daily_journal(user_name){
+	var user_id = document.getElementById(user_name).value;
+	document.getElementById('user_id').value = user_id;
+	id_form.submit();
+}
+
 
 function register_form(attendance){
 	document.getElementById('attendance').value = attendance;
 	register.submit();
-}
-
-
-//------------ Menu 5ea로 Change
-function Change_menu(){
-	var changer;
-	var changer_child_ul;
-	changer = document.getElementById('Header_top_nav').children;
-
-	var changer_length =changer.length;
-	for(var i=1; i<changer_length; i++ ){
-		changer[i].className = "Change_menulength dropdown";
-	}
-}
-
-// dropdown-menu _ hover
-function image_hover(root) {
-             mainimage.src = root;
-            }
-   
-// map mouse_hover
-function init(){
-document.getElementsByTagName('area')[0].onmouseover=function(){
-document.getElementById('mapA').src='/static/img/main_tutor_image_hover.png';
-this.onmouseout=function() {
-document.getElementById('mapA').src='/static/img/main_tutor_image.png';
-}
-}
-document.getElementsByTagName('area')[1].onmouseover=function(){
-document.getElementById('mapA').src='/static/img/main_tutor_image_hover.png';
-this.onmouseout=function() {
-document.getElementById('mapA').src='/static/img/main_tutor_image.png';
-}
-}
-document.getElementsByTagName('area')[2].onmouseover=function(){
-document.getElementById('mapB').src='/static/img/main_tutee_image_hover.png';
-this.onmouseout=function() {
-document.getElementById('mapB').src='/static/img/main_tutee_image.png';
-}
-}
-document.getElementsByTagName('area')[3].onmouseover=function(){ 
-document.getElementById('mapA').src='/static/img/main_tutor_image_hover.png';
-this.onmouseout=function() {
-document.getElementById('mapA').src='/static/img/main_tutor_image.png';
-}
-}
-}
-
-if(window.addEventListener){
-window.addEventListener('load',init,false);
-}
-else { 
-if(window.attachEvent){
-window.attachEvent('onload',init);
-}
 }

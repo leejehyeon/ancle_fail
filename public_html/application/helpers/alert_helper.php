@@ -82,4 +82,24 @@
         echo "<meta http-equiv=\"content-type\" content=\"text/html; charset=".$CI->config->item('charset')."\">";
         echo "<script type='text/javascript'> alert('".$msg."'); </script>";   
     }
+	
+	function alert_date($msg='',$url1='',$url2='',$url3='') 
+    {
+        $CI =& get_instance();
+ 		$url = $url1.'/'.$url2.'/'.$url3;
+        if (!$msg) $msg = '올바른 방법으로 이용해 주십시오.';
+
+        echo "<meta http-equiv=\"content-type\" content=\"text/html; charset=".$CI->config->item('charset')."\">";
+        echo "<script type='text/javascript'>alert('$msg');";
+
+        if ($url)
+            echo "location.replace('".$url."');";
+
+        else
+            echo "history.go(-1);";
+
+        echo "</script>";
+        
+        exit;
+    }
 ?>

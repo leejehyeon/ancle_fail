@@ -50,7 +50,9 @@
 						<?echo $i?>
 					</td>
 					<td class="border">
-						<?echo $lt->user_subject?>
+						<?foreach($get_subject as $it){?>
+						<?if(($lt -> subject_id) == ($it -> subject_id)){echo $it -> subject;}else{}?>
+						<?}?>
 					</td>
 					<td class="border">
 						<?echo $lt->user_number?>

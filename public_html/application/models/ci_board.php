@@ -48,7 +48,7 @@ class Ci_board extends CI_Model {
 		}else{
 			$result = $board_list -> result();
 		}
-		return $result;
+		return $result; 
 	}
 	
 	public function update_hit($board_id_type_array) {
@@ -76,6 +76,20 @@ class Ci_board extends CI_Model {
 		$this -> db -> where('board_id',(string)$board_id_type_array['board_id']);
 		return $this -> db -> delete('ci_board', $board_id_type_array);
 	}
-
+	
+	public function get_journal_board_all($table='ci_board',$type='',$offset='',$limit='') {
+		$this -> db -> order_by("board_id", "DESC");
+		$this -> db -> limit($limit,$offset);
+		$board_list = $this -> db -> get_where('journal_board');
+		
+		if( $type == 'count'){
+			$result = $this->db->count_all_results('journal_board');
+		
+		}else{
+			$result = $board_list -> result();
+		}
+		return $result;
+	}
+	
 }
 ?>

@@ -1,7 +1,7 @@
 <?
 // Session grade따라 메뉴를 구성
 $sidebar_content_array = array(	array(array('notice|공지사항','whole_notice|전체 공지사항','class_notice|수업 공지사항'),
-									  array('login_process|로그인','login|로그인','sign_up|회원가입','search_id_pwd|ID, PW 찾기')
+									  array('login_process|로그인 페이지','login|로그인','sign_up|회원가입','search_id_pwd|아이디,비밀번호 찾기')
 									 ),
 							  	array(array('notice|공지사항','whole_notice|전체 공지사항','class_notice|수업 공지사항'),
 									  array('lesson|수업','attendance_record_admin|출석부 관리','daily_journal_admin|근무일지 관리','enrichment_study_admin|보강신청 관리'),
@@ -37,56 +37,7 @@ $sidebar_content_array = array(	array(array('notice|공지사항','whole_notice|
 				}
 			?>
 		<div class="row">	
-			<div class="sidebar">
-			<?
-			for($j=0;$j<=count($sidebar_content_array[$i])-1;$j++){
-				/*
-				 	----대매뉴 지정----
-				 grade에 맞는 Array를 찾아가 "|"을 기준으로 
-				 Array를 따로 나눈다. 
-				 ex) 만약 이름이 $explode_top_array이고 explode를 시키면
-				 $explode_top_array[0] ,$explode_top_array[1]로 나뉜다.
-				*/	
-				$explode_top_array = explode('|', $sidebar_content_array[$i][$j][0]);
-				
-				if($menu_title == $explode_top_array[0])
-				{
-					for($k=1;$k<=count($sidebar_content_array[$i][$j])-1;$k++)
-					{
-						/*		
-						 ----submenu 지정----
-						 대메뉴 이름을 비교하여 같다면 그에 맞는 서브메뉴 지정 
-						*/						
-						$explode_category_top_array = explode('|', $sidebar_content_array[$i][$j][$k]);
-						if($category_title == $explode_category_top_array[0])
-						{
-?>		
-							<p class="sidebar_title"><?echo $explode_top_array[1]?></p>
-<?							$page_title= $explode_category_top_array[1];
-						}
-					}
-					for($k=1;$k<=count($sidebar_content_array[$i][$j])-1;$k++)
-					{
-?>
-		
-			<!--<ul class="" style=" width: 200px; ">-->
-<?
-						$explode_category_top_array = explode('|', $sidebar_content_array[$i][$j][$k]);
-						if($category_title == $explode_category_top_array[0])
-												{
-?>
-							<a href="/index.php/<?echo $explode_top_array[0]?>/<?if($explode_category_top_array[0]=="my_attendance"){echo $explode_category_top_array[0].'/'.date("Y/m");}else if($explode_category_top_array[0]=="attendance_record"){echo $explode_category_top_array[0].'/'.date("Y/m/d");?><?}else{echo $explode_category_top_array[0];}?>"><li class="sidebar_list"><p class="underline_title"><?echo $explode_category_top_array[1]?></p></li></a>						
-<?
-												}else{?>
-													<a href="/index.php/<?echo $explode_top_array[0]?>/<?if($explode_category_top_array[0]=="my_attendance"){echo $explode_category_top_array[0].'/'.date("Y/m");}else if($explode_category_top_array[0]=="attendance_record"){echo $explode_category_top_array[0].'/'.date("Y/m/d");?><?}else{echo $explode_category_top_array[0];}?>"><li class="sidebar_list"><p class="casual_title"><?echo $explode_category_top_array[1]?></p></li></a>
-													<?}
-					}
-				}
-			}					
-?>
-			<!--</ul>-->
-			</div>
-			<!--<div class="sidebar">
+			<div class="col-xs-3">
 			<?
 			for($j=0;$j<=count($sidebar_content_array[$i])-1;$j++){
 				/*
@@ -122,14 +73,17 @@ $sidebar_content_array = array(	array(array('notice|공지사항','whole_notice|
 <?
 						$explode_category_top_array = explode('|', $sidebar_content_array[$i][$j][$k]);
 ?>
-							<a href="/index.php/<?echo $explode_top_array[0]?>/<?if($explode_category_top_array[0]=="my_attendance"){echo $explode_category_top_array[0].'/'.date("Y/m");}else if($explode_category_top_array[0]=="attendance_record"){echo $explode_category_top_array[0].'/'.date("Y/m/d");?><?}else{echo $explode_category_top_array[0];}?>"><li class="list-group-item"><?echo $explode_category_top_array[1]?></li></a>						
+							<a href="/index.php/<?echo $explode_top_array[0]?>/
+								<?if($explode_category_top_array[0]=="my_attendance"){echo $explode_category_top_array[0].'/'.date("Y/m");
+								  }else if($explode_category_top_array[0]=="attendance_record"){echo $explode_category_top_array[0].'/'.date("Y/m/d");
+								  }else if($explode_category_top_array[0]=="daily_journal"){echo $explode_category_top_array[0].'/'.date("Y/m");
+								  }else if($explode_category_top_array[0]=="daily_journal_admin"){echo $explode_category_top_array[0].'/'.date("Y/m");
+								  }else{echo $explode_category_top_array[0];}?>"><li class="list-group-item"><?echo $explode_category_top_array[1]?></li></a>						
 <?
 					}
 				}
 			}					
 ?>
 			</ul>
-			</div>-->
-			<div class="page_title_area">
-				<p class="page_title"><?echo $page_title?></p>
 			</div>
+		
